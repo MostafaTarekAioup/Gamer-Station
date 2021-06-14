@@ -1,0 +1,66 @@
+.Landing-bage-container {
+  width: 100%;
+}
+.landing-header {
+  width: 100%;
+  height: 100vh;
+  background-image: url(../Images/header-back-2.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+  /* background-position: center; */
+}
+.header-content {
+  max-width: 800px;
+  margin: auto;
+  margin-top: 30vh;
+  display: grid;
+  justify-content: left;
+  align-items: center;
+}
+.header-details {
+  line-height: 60px;
+}
+.header-details h1 {
+  font-size: 50px;
+  font-weight: 400;
+  color: white;
+}
+.header-details .mark {
+  color: rgb(245, 59, 27);
+}
+
+.header-details p {
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: capitalize;
+  color: white;
+}
+.discover-btn {
+  background-color: tomato;
+  color: white;
+  font-size: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+.discover-btn:hover {
+  background-color: rgb(255, 40, 2);
+}
+
+@media only screen and (max-width: 770px) {
+  .header-details h1 {
+    font-size: 25px;
+    font-weight: 500;
+  }
+  .header-details p {
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+  .header-details {
+    line-height: 40px;
+  }
+  .discover-btn {
+    font-size: 18px;
+  }
+}
