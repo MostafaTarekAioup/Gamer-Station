@@ -10,6 +10,6 @@ Gamer station is Large database Website based on rawg.io API . to helpe user to 
 
 ###### 1 - Open project directory and run 'npm install'
 
-###### 2 - Open project directory and run 'npm Start'
+###### 2 - run 'npm Start'
 
-###### 3 - Open project directory and run 'http://localhost:3000/'
+###### 3 - Open 'localhost:3000/' on your Browser
