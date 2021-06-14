@@ -181,3 +181,29 @@
   width: 100%;
   gap: 10px;
 }
+.to-top-page {
+  font-size: 25px;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: tomato;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+.to-top-page:hover {
+  background-color: rgb(252, 38, 0);
+}
+.to-top-page-active {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1);
+}

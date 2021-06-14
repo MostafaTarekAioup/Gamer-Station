@@ -31,6 +31,28 @@ const GameDetails = () => {
  const [trailers , setTrailers] = useState([])
  const [trailercont , setTrailerCon] = useState(false)
 
+ const [istoTop , setIsTOTop] = useState(false)
+
+const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
+
+ useEffect(() => {
+    // Button is displayed after scrolling for 500 pixels
+    const toggleVisibility = () => {
+      if (window.pageYOffset > 200) {
+        setIsTOTop(true);
+      } else {
+        setIsTOTop(false);
+      }
+    };
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
+  }, []);
+
  const fetchSingleGame = async ()=>{
   const response = await fetch(url)
   const tempGameData = await response.json()
@@ -67,6 +89,9 @@ let gameRrquerimentsData = platforms.find((platReu)=> platReu.platform.name === 
 
  return (
   <div className='container'>
+    <div onClick={scrollToTop} className={`${istoTop ?'to-top-page to-top-page-active'  :  'to-top-page'}`}>
+   <FaAngleUp/>
+    </div>
    <div className="game-details-container">
     <div className="header-title">
      <h1>{name}</h1>
