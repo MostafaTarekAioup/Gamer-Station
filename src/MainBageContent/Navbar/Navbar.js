@@ -4,7 +4,7 @@ import { FaAlignJustify  , FaGhost} from "react-icons/fa";
 import {useGlopalContext} from '../../Context'
 import { Link } from "react-router-dom";
 const Navbar = () => {
- const {isSubmenuActive,setIsSubmenuActive } = useGlopalContext()
+ const {isSubmenuActive,setIsSubmenuActive ,favorits } = useGlopalContext()
  return (
  <div className="nav-container">
    <div className="container  nav-items">
@@ -17,7 +17,7 @@ const Navbar = () => {
       <ul className='active'>
        <li><Link to='/'>Home</Link></li>
        <li><Link to='/discover'>Discover</Link></li>
-       <li><Link to='/favorit'>Favorits</Link></li>
+       <li className='favorit-container'><Link to='/favorit'>Favorits <span className='fav-count'>{favorits.length}</span></Link></li>
        <li><Link to='/apout'>About</Link></li>
       </ul>
       <FaAlignJustify onClick={()=> setIsSubmenuActive(!isSubmenuActive) } className='menu-icon'/>

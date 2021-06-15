@@ -167,11 +167,33 @@
   transform: translateX(0);
 }
 .fav-icon {
-  font-size: 20px;
+  font-size: 30px;
+  border-radius: 5px;
 }
 .fav-icon:hover {
   color: tomato;
   cursor: pointer;
+}
+.fav-icon-active {
+  color: tomato;
+}
+.fav-count-submenu {
+  background-color: tomato;
+  font-size: 15px;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  border-radius: 50%;
+  color: white;
+}
+.favorit-container-submenu {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
 }
 .icons {
   display: grid;

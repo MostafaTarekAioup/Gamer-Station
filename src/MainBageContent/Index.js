@@ -2,7 +2,6 @@ import React ,{useEffect , useState} from 'react'
 import AllGamesCard from './AllGamesCards'
 import Search from './search/Search'
 import { FaAngleUp} from "react-icons/fa";
-
 const Index = () => {
 const [istoTop , setIsTOTop] = useState(false)
 
@@ -12,9 +11,7 @@ const scrollToTop = () => {
       behavior: "smooth"
     });
   };
-
  useEffect(() => {
-    // Button is displayed after scrolling for 500 pixels
     const toggleVisibility = () => {
       if (window.pageYOffset > 200) {
         setIsTOTop(true);

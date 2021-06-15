@@ -3,6 +3,15 @@ import axios from 'axios'
 
 const AppContext = React.createContext()
 const AppProvider = ({children})=>{
+
+  const getLocalStorageData = ()=>{
+    let localData = localStorage.getItem('favorits')
+    if(localData){
+      return JSON.parse(localStorage.getItem('favorits'))
+    }else{
+      return []
+    }
+  }
   const [loading , setLoading] = useState(true)
   const [error , setError] = useState(false)
   const [games , setGames] = useState([])
@@ -10,8 +19,13 @@ const AppProvider = ({children})=>{
   const [query , setQuery] = useState('')
   const [pageNumber , setPageNumber] = useState(1)
   const [isSubmenuActive , setIsSubmenuActive] = useState(false)
+  const [favorits , setFavorits] = useState(getLocalStorageData())
+  // for detect last card of games
 
   const opsirver = useRef() 
+
+  // for infinity scrool
+
 const lastGame = useCallback( node => {
   // if (loading) return
   if(opsirver.current) opsirver.current.disconnect()
@@ -23,9 +37,13 @@ const lastGame = useCallback( node => {
   if(node) opsirver.current.observe(node)
 },[loading,hasMore])
 
+// clear all cards befor search
+
   useEffect(()=>{
   setGames([])
   },[query])
+
+  // games data
 
   useEffect(()=>{
   setError(false)
@@ -49,19 +67,36 @@ const lastGame = useCallback( node => {
  },
  [query , pageNumber])
 
+ // handle search 
 const handelSearch=(e)=>{
   setQuery(e.target.value)
   setPageNumber(1)
  }
 
+// handle favorits 
+const handleFavorits = (background_image , id , name  , metacritic)=>{
+  let findGame = favorits.find((gameId)=> gameId.id === id)
+  if(findGame){
+    const newFavorits = favorits.filter((newFav)=> newFav.id !== id)
+    setFavorits(newFavorits)
+  }else{
+    let tampCard = {background_image : background_image , id : id , name : name  , metacritic : metacritic }
+    setFavorits([...favorits , tampCard])
+  }  
+}
+
+// save Favorits Data to Local Storage 
+useEffect(()=>{
+  localStorage.setItem('favorits',JSON.stringify(favorits))
+  console.log(favorits)
+},[favorits])
 
 
 
 
 
 
-
- return <AppContext.Provider value={{ isSubmenuActive , setIsSubmenuActive , games , query , handelSearch ,lastGame , loading , error}}>
+ return <AppContext.Provider value={{ isSubmenuActive , setIsSubmenuActive , games , query , handelSearch ,lastGame , loading , error , favorits , setFavorits , handleFavorits }}>
  {children}
  </AppContext.Provider>
 }

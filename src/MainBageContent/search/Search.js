@@ -5,9 +5,6 @@ import './style.css'
 
 const Search = () => {
 const {query,handelSearch} = useGlopalContext()
-
-
-
  return (
   <div className='search-container'>
    <div className="form-container">

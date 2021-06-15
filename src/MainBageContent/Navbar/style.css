@@ -113,6 +113,26 @@ nav ul li a:hover {
   text-decoration: none;
   color: white;
 }
+.fav-count {
+  display: grid;
+  position: absolute;
+  background-color: tomato;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  line-height: 1px;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  top: -10px;
+  right: -10px;
+  letter-spacing: normal;
+  font-size: 14px;
+  color: white;
+}
+.favorit-container {
+  position: relative;
+}
 @media only screen and (max-width: 770px) {
   nav ul {
     display: none;

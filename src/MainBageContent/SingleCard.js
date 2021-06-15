@@ -4,10 +4,21 @@ import { Link } from "react-router-dom";
 import { FaHeart ,FaLayerGroup , FaSearch , FaAngleLeft} from "react-icons/fa";
 
 const SingleCard = ({background_image , id , name  , metacritic } ) => {
-const {lastGame} = useGlopalContext()
- const [isHover , setIsHover] = useState(false)
+const {lastGame , handleFavorits , favorits} = useGlopalContext()
+const [isHover , setIsHover] = useState(false)
+const [isFavorits , setIsFavorits] = useState(false)
 
- return<div ref={lastGame}  className="game-card" key={id} onMouseEnter={()=> setIsHover(true)} onMouseLeave={()=> setIsHover(false)}>
+const handleFavoritsIcon=()=>{
+  let findGame = favorits.find((favGame)=> favGame.id === id)
+  if(findGame){
+    console.log("found")
+    setIsFavorits(true)
+  }else{
+    setIsFavorits(false)
+  }
+}
+
+ return<div ref={lastGame}  className="game-card" key={id} onMouseEnter={()=> {setIsHover(true) ; handleFavoritsIcon()}} onMouseLeave={()=> setIsHover(false)} onClick={()=>{setIsHover(true) ; handleFavoritsIcon()}} onBlur={()=>setIsHover(false)}>
         <div className="game-image">
           <img src={background_image} alt={name} />
           <div className={`${isHover? 'game-details-icon game-details-icon-active ' : 'game-details-icon'}`}>
@@ -31,8 +42,7 @@ const {lastGame} = useGlopalContext()
         </div>
         <div className={`${isHover? 'favorit fav-active' : 'favorit'}`}>
          <div className="icons">
-          <FaHeart className='fav-icon'/>
-          <FaLayerGroup className='fav-icon'/>
+          <FaHeart  onClick={()=>{ handleFavorits(background_image , id , name  , metacritic) ; setIsFavorits(!isFavorits)}} className={`${isFavorits ? 'fav-icon fav-icon-active':'fav-icon'}`}/>
          </div>
         </div>
       </div>
